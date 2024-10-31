@@ -1,5 +1,8 @@
 FROM snowdreamtech/build-essential:bookworm
 
+ENV QT_VERSION=5.15.15 \
+    QT_MAJOR_MINOR_VERSION=5.15
+
 # Qt for X11 Requirements
 # Platform Plugin Dependencies
 RUN set -eux \
@@ -68,8 +71,15 @@ RUN set -eux \
     && rm -rf /tmp/* \
     && rm -rf /var/tmp/*    
 
+# Download Qt source code and unzip it.
+RUN wget -c https://download.qt.io/official_releases/qt/${QT_MAJOR_MINOR_VERSION}/${QT_VERSION}/single/qt-everywhere-opensource-src-${QT_VERSION}.tar.xz \
+    && tar jxvf qt-everywhere-opensource-src-${QT_VERSION}.tar.xz 
 
-
+# # Compile
+# RUN cd qt-everywhere-opensource-src-${QT_VERSION} \
+#     ./configure \
+#     && make -j4 \
+#     && make -j4 docs
 
 # FROM snowdreamtech/debian:12.7.0
 
