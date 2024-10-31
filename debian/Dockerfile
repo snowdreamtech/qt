@@ -78,8 +78,8 @@ RUN wget -c https://download.qt.io/official_releases/qt/${QT_MAJOR_MINOR_VERSION
 # # Compile
 # RUN cd qt-everywhere-opensource-src-${QT_VERSION} \
 #     ./configure \
-#     && make -j4 \
-#     && make -j4 docs
+#     && make -j$(nproc) \
+#     && make -j$(nproc) docs
 
 # FROM snowdreamtech/debian:12.7.0
 
