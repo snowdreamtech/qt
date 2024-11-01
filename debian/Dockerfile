@@ -72,8 +72,8 @@ RUN set -eux \
     && rm -rf /var/tmp/*    
 
 # Download Qt source code and unzip it.
-# RUN wget -c https://download.qt.io/official_releases/qt/${QT_MAJOR_MINOR_VERSION}/${QT_VERSION}/single/qt-everywhere-opensource-src-${QT_VERSION}.tar.xz \
-#     && tar xvf qt-everywhere-opensource-src-${QT_VERSION}.tar.xz 
+RUN wget -c https://download.qt.io/official_releases/qt/${QT_MAJOR_MINOR_VERSION}/${QT_VERSION}/single/qt-everywhere-opensource-src-${QT_VERSION}.tar.xz \
+    && tar xvf qt-everywhere-opensource-src-${QT_VERSION}.tar.xz 
 
 # # Compile
 # RUN cd qt-everywhere-opensource-src-${QT_VERSION} \
