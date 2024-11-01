@@ -39,15 +39,15 @@ RUN set -eux \
 # Accessibility Dependencies
 # The Qt accessibility implementation uses the Assistive Technology Service Provider Interface (AT-SPI). 
 # Besides DBUS, the development package libatspi2.0-dev must be installed.
-RUN set -eux \
-    && apt-get -qqy update  \
-    && apt-get -qqy install --no-install-recommends \ 
-    libatspi2.0-dev \
-    && apt-get -qqy --purge autoremove \
-    && apt-get -qqy clean \
-    && rm -rf /var/lib/apt/lists/* \
-    && rm -rf /tmp/* \
-    && rm -rf /var/tmp/*    
+# RUN set -eux \
+#     && apt-get -qqy update  \
+#     && apt-get -qqy install --no-install-recommends \ 
+#     libatspi2.0-dev \
+#     && apt-get -qqy --purge autoremove \
+#     && apt-get -qqy clean \
+#     && rm -rf /var/lib/apt/lists/* \
+#     && rm -rf /tmp/* \
+#     && rm -rf /var/tmp/*    
 
 # OpenGL Dependencies
 # Configure attempts to automatically detect OpenGL ES 2.0, or later, or regular desktop OpenGL.
@@ -55,25 +55,25 @@ RUN set -eux \
 #
 # Note: The Qt OpenGL module (which contains classes that start with QGL) has been deprecated in favor of the Qt GUI module
 #  (which contains classes that start with QOpenGL).
-RUN set -eux \
-    && apt-get -qqy update  \
-    && apt-get -qqy install --no-install-recommends \ 
-    mesa-utils \
-    libgles2-mesa-dev \
-    libglfw3-dev  \
-    freeglut3-dev \
-    libglew-dev \
-    libegl-dev \
-    libegl1-mesa-dev \
-    && apt-get -qqy --purge autoremove \
-    && apt-get -qqy clean \
-    && rm -rf /var/lib/apt/lists/* \
-    && rm -rf /tmp/* \
-    && rm -rf /var/tmp/*    
+# RUN set -eux \
+#     && apt-get -qqy update  \
+#     && apt-get -qqy install --no-install-recommends \ 
+#     mesa-utils \
+#     libgles2-mesa-dev \
+#     libglfw3-dev  \
+#     freeglut3-dev \
+#     libglew-dev \
+#     libegl-dev \
+#     libegl1-mesa-dev \
+#     && apt-get -qqy --purge autoremove \
+#     && apt-get -qqy clean \
+#     && rm -rf /var/lib/apt/lists/* \
+#     && rm -rf /tmp/* \
+#     && rm -rf /var/tmp/*    
 
 # Download Qt source code and unzip it.
-RUN wget -c https://download.qt.io/official_releases/qt/${QT_MAJOR_MINOR_VERSION}/${QT_VERSION}/single/qt-everywhere-opensource-src-${QT_VERSION}.tar.xz \
-    && tar xvf qt-everywhere-opensource-src-${QT_VERSION}.tar.xz 
+# RUN wget -c https://download.qt.io/official_releases/qt/${QT_MAJOR_MINOR_VERSION}/${QT_VERSION}/single/qt-everywhere-opensource-src-${QT_VERSION}.tar.xz \
+#     && tar xvf qt-everywhere-opensource-src-${QT_VERSION}.tar.xz 
 
 # # Compile
 # RUN cd qt-everywhere-opensource-src-${QT_VERSION} \
