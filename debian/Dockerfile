@@ -3,6 +3,31 @@ FROM snowdreamtech/build-essential:bookworm
 ENV QT_VERSION=5.15.15 \
     QT_MAJOR_MINOR_VERSION=5.15
 
+# Base
+RUN set -eux \
+    && apt-get -qqy update  \
+    && apt-get -qqy install \ 
+    procps \
+    sudo \
+    vim \ 
+    unzip \
+    tzdata \
+    openssl \
+    wget \
+    curl \
+    iputils-ping \
+    lsof \
+    apt-transport-https \
+    ca-certificates \                                                                                                                                                                                                      
+    && update-ca-certificates\
+    && apt-get -qqy --purge autoremove \
+    && apt-get -qqy clean \
+    && rm -rf /var/lib/apt/lists/* \
+    && rm -rf /tmp/* \
+    && rm -rf /var/tmp/* \
+    && sed -i "s|Suites:\s*bookworm\s*bookworm-updates.*|Suites: bookworm bookworm-updates bookworm-backports trixie sid experimental|g" /etc/apt/sources.list.d/debian.sources \
+    && echo 'export PROMPT_COMMAND="history -a; $PROMPT_COMMAND"' >> /etc/bash.bashrc 
+
 # Qt for X11 Requirements
 # Platform Plugin Dependencies
 RUN set -eux \
