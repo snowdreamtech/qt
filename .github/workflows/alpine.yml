@@ -37,7 +37,7 @@ on:
 
 jobs:
   buildx:
-    runs-on: 2H4G
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4.2.2
