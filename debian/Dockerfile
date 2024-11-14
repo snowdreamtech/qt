@@ -30,36 +30,36 @@ RUN set -eux \
 
 # Qt for X11 Requirements
 # Platform Plugin Dependencies
-RUN set -eux \
-    && apt-get -qqy update  \
-    && apt-get -qqy install \ 
-    libfontconfig1-dev \
-    libfreetype-dev \
-    libx11-dev \
-    libx11-xcb-dev \
-    libxext-dev \
-    libxfixes-dev \
-    libxi-dev \
-    libxrender-dev \
-    libxcb1-dev \
-    libxcb-glx0-dev \
-    libxcb-keysyms1-dev \
-    libxcb-image0-dev \
-    libxcb-shm0-dev \
-    libxcb-icccm4-dev \
-    libxcb-sync-dev \
-    libxcb-xfixes0-dev \
-    libxcb-shape0-dev \
-    libxcb-randr0-dev \
-    libxcb-render-util0-dev \
-    libxcb-xinerama0-dev \
-    libxkbcommon-dev \
-    libxkbcommon-x11-dev \
-    && apt-get -qqy --purge autoremove \
-    && apt-get -qqy clean \
-    && rm -rf /var/lib/apt/lists/* \
-    && rm -rf /tmp/* \
-    && rm -rf /var/tmp/*
+# RUN set -eux \
+#     && apt-get -qqy update  \
+#     && apt-get -qqy install \ 
+#     libfontconfig1-dev \
+#     libfreetype-dev \
+#     libx11-dev \
+#     libx11-xcb-dev \
+#     libxext-dev \
+#     libxfixes-dev \
+#     libxi-dev \
+#     libxrender-dev \
+#     libxcb1-dev \
+#     libxcb-glx0-dev \
+#     libxcb-keysyms1-dev \
+#     libxcb-image0-dev \
+#     libxcb-shm0-dev \
+#     libxcb-icccm4-dev \
+#     libxcb-sync-dev \
+#     libxcb-xfixes0-dev \
+#     libxcb-shape0-dev \
+#     libxcb-randr0-dev \
+#     libxcb-render-util0-dev \
+#     libxcb-xinerama0-dev \
+#     libxkbcommon-dev \
+#     libxkbcommon-x11-dev \
+#     && apt-get -qqy --purge autoremove \
+#     && apt-get -qqy clean \
+#     && rm -rf /var/lib/apt/lists/* \
+#     && rm -rf /tmp/* \
+#     && rm -rf /var/tmp/*
 
 # Accessibility Dependencies
 # The Qt accessibility implementation uses the Assistive Technology Service Provider Interface (AT-SPI). 
@@ -80,25 +80,25 @@ RUN set -eux \
 #
 # Note: The Qt OpenGL module (which contains classes that start with QGL) has been deprecated in favor of the Qt GUI module
 #  (which contains classes that start with QOpenGL).
-RUN set -eux \
-    && apt-get -qqy update  \
-    && apt-get -qqy install \ 
-    mesa-utils \
-    libgles2-mesa-dev \
-    libglfw3-dev  \
-    freeglut3-dev \
-    libglew-dev \
-    libegl-dev \
-    libegl1-mesa-dev \
-    && apt-get -qqy --purge autoremove \
-    && apt-get -qqy clean \
-    && rm -rf /var/lib/apt/lists/* \
-    && rm -rf /tmp/* \
-    && rm -rf /var/tmp/*    
+# RUN set -eux \
+#     && apt-get -qqy update  \
+#     && apt-get -qqy install \ 
+#     mesa-utils \
+#     libgles2-mesa-dev \
+#     libglfw3-dev  \
+#     freeglut3-dev \
+#     libglew-dev \
+#     libegl-dev \
+#     libegl1-mesa-dev \
+#     && apt-get -qqy --purge autoremove \
+#     && apt-get -qqy clean \
+#     && rm -rf /var/lib/apt/lists/* \
+#     && rm -rf /tmp/* \
+#     && rm -rf /var/tmp/*    
 
 # Download Qt source code and unzip it.
-RUN wget -c https://mirrors.tuna.tsinghua.edu.cn/qt/archive/qt/${QT_MAJOR_MINOR_VERSION}/${QT_VERSION}/single/qt-everywhere-opensource-src-${QT_VERSION}.tar.xz \
-    && tar xvf qt-everywhere-opensource-src-${QT_VERSION}.tar.xz 
+# RUN wget -c https://mirrors.tuna.tsinghua.edu.cn/qt/archive/qt/${QT_MAJOR_MINOR_VERSION}/${QT_VERSION}/single/qt-everywhere-opensource-src-${QT_VERSION}.tar.xz \
+#     && tar xvf qt-everywhere-opensource-src-${QT_VERSION}.tar.xz 
 
 # # Compile
 # RUN cd qt-everywhere-opensource-src-${QT_VERSION} \
