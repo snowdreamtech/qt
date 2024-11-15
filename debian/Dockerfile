@@ -1,5 +1,12 @@
 FROM snowdreamtech/build-essential:bookworm
 
+
+# QT
+# 1+ Billion Devices and Applications Powered and Assured by Qt
+#
+# https://doc.qt.io
+# https://doc.qt.io/qt-6.2/build-sources.html#linux-x11
+
 ENV QT_VERSION=6.2.10 \
     QT_MAJOR_MINOR_VERSION=6.2
 
@@ -28,6 +35,8 @@ RUN set -eux \
     && sed -i "s|Suites:\s*bookworm\s*bookworm-updates.*|Suites: bookworm bookworm-updates bookworm-backports trixie sid experimental|g" /etc/apt/sources.list.d/debian.sources \
     && echo 'export PROMPT_COMMAND="history -a; $PROMPT_COMMAND"' >> /etc/bash.bashrc 
 
+COPY vimrc.local /etc/vim/vimrc.local
+
 # Qt for X11 Requirements
 # Platform Plugin Dependencies
 RUN set -eux \
@@ -52,7 +61,9 @@ RUN set -eux \
     libxcb-shape0-dev \
     libxcb-randr0-dev \
     libxcb-render-util0-dev \
+    libxcb-util-dev \
     libxcb-xinerama0-dev \
+    libxcb-xkb-dev \
     libxkbcommon-dev \
     libxkbcommon-x11-dev \
     && apt-get -qqy --purge autoremove \
