@@ -1,7 +1,7 @@
 FROM snowdreamtech/build-essential:bookworm
 
-ENV QT_VERSION=5.15.15 \
-    QT_MAJOR_MINOR_VERSION=5.15
+ENV QT_VERSION=6.2.10 \
+    QT_MAJOR_MINOR_VERSION=6.2
 
 # Base
 RUN set -eux \
