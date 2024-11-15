@@ -35,8 +35,6 @@ RUN set -eux \
     && sed -i "s|Suites:\s*bookworm\s*bookworm-updates.*|Suites: bookworm bookworm-updates bookworm-backports trixie sid experimental|g" /etc/apt/sources.list.d/debian.sources \
     && echo 'export PROMPT_COMMAND="history -a; $PROMPT_COMMAND"' >> /etc/bash.bashrc 
 
-COPY vimrc.local /etc/vim/vimrc.local
-
 # Qt for X11 Requirements
 # Platform Plugin Dependencies
 RUN set -eux \
@@ -114,7 +112,7 @@ RUN wget -c https://mirrors.tuna.tsinghua.edu.cn/qt/archive/qt/${QT_MAJOR_MINOR_
 # # Compile
 # RUN cd qt-everywhere-opensource-src-${QT_VERSION} \
 #     ./configure \
-#     && make -j$(nproc) \
+#     && cmake --build . --parallel $(nproc)
 #     && make -j$(nproc) docs
 
 # FROM snowdreamtech/debian:12.7.0
