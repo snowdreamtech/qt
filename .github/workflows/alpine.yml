@@ -86,9 +86,9 @@ jobs:
         uses: docker/metadata-action@v5.6.1
         with:
           images: |
-            name=snowdreamtech/base,enable=true
-            name=ghcr.io/snowdreamtech/base,enable=true
-            name=quay.io/snowdreamtech/base,enable=true
+            name=snowdreamtech/qt,enable=true
+            name=ghcr.io/snowdreamtech/qt,enable=true
+            name=quay.io/snowdreamtech/qt,enable=true
           flavor: |
             latest=false  
             prefix=

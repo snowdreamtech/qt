@@ -1,8 +1,8 @@
-# Base
+# QT
 
-[![Base](http://dockeri.co/image/snowdreamtech/base)](https://hub.docker.com/r/snowdreamtech/base)
+[![QT](http://dockeri.co/image/snowdreamtech/qt)](https://hub.docker.com/r/snowdreamtech/qt)
 
-Docker Image packaging for Base. (amd64, arm32v5,  arm32v6, arm32v7, arm64v8, i386, mips64le, ppc64le,riscv64, s390x)
+Docker Image packaging for QT. (amd64, arm32v5,  arm32v6, arm32v7, arm64v8, i386, mips64le, ppc64le,riscv64, s390x)
 
 # Usage
 
@@ -14,21 +14,21 @@ To help you get started creating a container from this image you can either use 
 
 ```bash
 docker run -d \
-  --name=base \
+  --name=qt \
   -e TZ=Asia/Shanghai \
   --restart unless-stopped \
-  snowdreamtech/base:latest
+  snowdreamtech/qt:latest
 ```
 
 ### Advance
 
 ```bash
 docker run -d \
-  --name=base \
+  --name=qt \
   -e TZ=Asia/Shanghai \
   -v /path/to/data:/path/to/data \
   --restart unless-stopped \
-  snowdreamtech/base:latest
+  snowdreamtech/qt:latest
 ```
 
 ## Docker Compose
@@ -40,8 +40,8 @@ version: "3"
 
 services:
   base:
-    image: snowdreamtech/base:latest
-    container_name: base
+    image: snowdreamtech/qt:latest
+    container_name: qt
     environment:
       - TZ=Asia/Shanghai
     restart: unless-stopped
@@ -54,8 +54,8 @@ version: "3"
 
 services:
   base:
-    image: snowdreamtech/base:latest
-    container_name: base
+    image: snowdreamtech/qt:latest
+    container_name: qt
     environment:
       - TZ=Asia/Shanghai
     volumes:
@@ -67,7 +67,7 @@ services:
 
 ```bash
 docker buildx create --use --name build --node build --driver-opt network=host
-docker buildx build -t snowdreamtech/base --platform=linux/386,linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64,linux/ppc64le,linux/riscv64,linux/s390x . --push
+docker buildx build -t snowdreamtech/qt --platform=linux/386,linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64,linux/ppc64le,linux/riscv64,linux/s390x . --push
 ```
 
 ## Reference
