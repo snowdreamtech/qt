@@ -46,6 +46,29 @@ RUN set -eux \
     && rm -rf /tmp/* \
     && rm -rf /var/tmp/*    
 
+# OpenGL Dependencies
+# Configure attempts to automatically detect OpenGL ES 2.0, or later, or regular desktop OpenGL.
+#  You can disable OpenGL support by using the -no-opengl option.
+#
+# Note: The Qt OpenGL module (which contains classes that start with QGL) has been deprecated in favor of the Qt GUI module
+#  (which contains classes that start with QOpenGL).
+RUN set -eux \
+    && apt-get -qqy update  \
+    && apt-get -qqy install --no-install-recommends \ 
+    mesa-utils \
+    libgles2-mesa-dev \
+    libglfw3-dev  \
+    freeglut3-dev \
+    libglew-dev \
+    libegl-dev \
+    libegl1-mesa-dev \
+    && apt-get -qqy --purge autoremove \
+    && apt-get -qqy clean \
+    && rm -rf /var/lib/apt/lists/* \
+    && rm -rf /tmp/* \
+    && rm -rf /var/tmp/*    
+
+
 
 
 # FROM snowdreamtech/debian:12.7.0
