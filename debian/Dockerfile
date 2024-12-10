@@ -39,15 +39,15 @@ RUN set -eux \
 # Accessibility Dependencies
 # The Qt accessibility implementation uses the Assistive Technology Service Provider Interface (AT-SPI). 
 # Besides DBUS, the development package libatspi2.0-dev must be installed.
-# RUN set -eux \
-#     && apt-get -qqy update  \
-#     && apt-get -qqy install --no-install-recommends \ 
-#     libatspi2.0-dev \
-#     && apt-get -qqy --purge autoremove \
-#     && apt-get -qqy clean \
-#     && rm -rf /var/lib/apt/lists/* \
-#     && rm -rf /tmp/* \
-#     && rm -rf /var/tmp/*    
+RUN set -eux \
+    && apt-get -qqy update  \
+    && apt-get -qqy install \ 
+    libatspi2.0-dev \
+    && apt-get -qqy --purge autoremove \
+    && apt-get -qqy clean \
+    && rm -rf /var/lib/apt/lists/* \
+    && rm -rf /tmp/* \
+    && rm -rf /var/tmp/*    
 
 # OpenGL Dependencies
 # Configure attempts to automatically detect OpenGL ES 2.0, or later, or regular desktop OpenGL.
@@ -57,7 +57,7 @@ RUN set -eux \
 #  (which contains classes that start with QOpenGL).
 # RUN set -eux \
 #     && apt-get -qqy update  \
-#     && apt-get -qqy install --no-install-recommends \ 
+#     && apt-get -qqy install \ 
 #     mesa-utils \
 #     libgles2-mesa-dev \
 #     libglfw3-dev  \
@@ -100,7 +100,7 @@ RUN set -eux \
 
 # RUN set -eux \
 #     && apt-get -qqy update  \
-#     && apt-get -qqy install --no-install-recommends \ 
+#     && apt-get -qqy install \ 
 #     vim \
 #     && apt-get -qqy --purge autoremove \
 #     && apt-get -qqy clean \
