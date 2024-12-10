@@ -33,6 +33,20 @@ RUN set -eux \
     && rm -rf /tmp/* \
     && rm -rf /var/tmp/*
 
+# Accessibility Dependencies
+# The Qt accessibility implementation uses the Assistive Technology Service Provider Interface (AT-SPI). 
+# Besides DBUS, the development package libatspi2.0-dev must be installed.
+RUN set -eux \
+    && apt-get -qqy update  \
+    && apt-get -qqy install --no-install-recommends \ 
+    libatspi2.0-dev \
+    && apt-get -qqy --purge autoremove \
+    && apt-get -qqy clean \
+    && rm -rf /var/lib/apt/lists/* \
+    && rm -rf /tmp/* \
+    && rm -rf /var/tmp/*    
+
+
 
 # FROM snowdreamtech/debian:12.7.0
 
