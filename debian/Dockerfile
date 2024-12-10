@@ -4,9 +4,9 @@ FROM snowdreamtech/build-essential:bookworm
 # Platform Plugin Dependencies
 RUN set -eux \
     && apt-get -qqy update  \
-    && apt-get -qqy install --no-install-recommends \ 
+    && apt-get -qqy install \ 
     libfontconfig1-dev \
-    libfreetype6-dev \
+    libfreetype-dev \
     libx11-dev \
     libx11-xcb-dev \
     libxext-dev \
