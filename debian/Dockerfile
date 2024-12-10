@@ -110,10 +110,10 @@ RUN wget -c https://mirrors.tuna.tsinghua.edu.cn/qt/archive/qt/${QT_MAJOR_MINOR_
     && tar xvf qt-everywhere-opensource-src-${QT_VERSION}.tar.xz 
 
 # # Compile
-# RUN cd qt-everywhere-opensource-src-${QT_VERSION} \
-#     ./configure \
-#     && cmake --build . --parallel $(nproc)
-#     && make -j$(nproc) docs
+RUN cd qt-everywhere-src-${QT_VERSION} \
+    && ./configure \
+    && cmake --build . --parallel $(nproc) \
+    && make -j$(nproc) docs
 
 # FROM snowdreamtech/debian:12.7.0
 
