@@ -161,7 +161,9 @@ RUN cd qt-everywhere-src-${QT_VERSION} \
     && cmake --build . --parallel $(nproc) \
     && cmake --install . \
     && rm -rfv qt-everywhere-opensource-src-${QT_VERSION}.tar.xz \
-    && rm -rfv qt-everywhere-src-${QT_VERSION}
+    && rm -rfv qt-everywhere-src-${QT_VERSION} \
+    && echo 'export PATH=/usr/local/Qt-6.2.10/bin:$PATH' | tee -a /root/.bashrc 
+
 
 COPY docker-entrypoint.sh /usr/local/bin/
 
