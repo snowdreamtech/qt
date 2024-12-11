@@ -159,7 +159,9 @@ RUN wget -c https://mirrors.tuna.tsinghua.edu.cn/qt/archive/qt/${QT_MAJOR_MINOR_
 RUN cd qt-everywhere-src-${QT_VERSION} \
     && ./configure \
     && cmake --build . --parallel $(nproc) \
-    && cmake --install .
+    && cmake --install . \
+    && rm -rfv qt-everywhere-opensource-src-${QT_VERSION}.tar.xz \
+    && rm -rfv qt-everywhere-src-${QT_VERSION}
 
 COPY docker-entrypoint.sh /usr/local/bin/
 
