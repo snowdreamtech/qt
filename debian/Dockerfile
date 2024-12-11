@@ -28,6 +28,8 @@ RUN set -eux \
     curl \
     iputils-ping \
     lsof \
+    fonts-wqy-zenhei \
+    fonts-wqy-microhei \
     apt-transport-https \
     ca-certificates \                                                                                                                                                                                                      
     && update-ca-certificates\
