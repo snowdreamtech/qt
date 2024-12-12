@@ -10,6 +10,7 @@ FROM snowdreamtech/build-essential:bookworm as builder
 # keep the docker container running
 ENV KEEPALIVE=1 \
     SSH_ROOT_PASSWORD= \
+    LLVM_VERSION=18 \
     QT_VERSION=6.2.10 \
     QT_MAJOR_MINOR_VERSION=6.2 \
     PATH=/usr/local/Qt-6.2.10/bin:$PATH
@@ -41,6 +42,32 @@ RUN set -eux \
     && sed -i "s|Suites:\s*bookworm\s*bookworm-updates.*|Suites: bookworm bookworm-updates bookworm-backports trixie sid experimental|g" /etc/apt/sources.list.d/debian.sources \
     && echo 'export PROMPT_COMMAND="history -a; $PROMPT_COMMAND"' >> /etc/bash.bashrc 
 
+RUN set -eux \  
+    && apt-get -qqy update  \
+    && apt-get -qqy install --no-install-recommends \ 
+    lsb-release \
+    wget  \
+    software-properties-common \
+    gnupg2 \
+    lld \
+    cmake \
+    ninja-build \
+    python3 \
+    && apt-get -qqy --purge autoremove \
+    && apt-get -qqy clean \
+    && rm -rf /var/lib/apt/lists/* \
+    && rm -rf /tmp/* \
+    && rm -rf /var/tmp/*
+
+COPY update-alternatives-llvm.sh /usr/local/bin/
+
+RUN set -eux \
+    && wget https://apt.llvm.org/llvm.sh \
+    && chmod +x llvm.sh \
+    && ./llvm.sh ${LLVM_VERSION} all \
+    && update-alternatives-llvm.sh  "${LLVM_VERSION}" 100  >/dev/null 2>&1 \
+    && rm llvm.sh 
+     
 # OpenSSH Server
 RUN set -eux \
     && apt-get -qqy update  \
