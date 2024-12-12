@@ -15,32 +15,7 @@ ENV KEEPALIVE=1 \
     QT_MAJOR_MINOR_VERSION=6.2 \
     PATH=/usr/local/Qt-6.2.10/bin:$PATH
 
-# Base
-RUN set -eux \
-    && apt-get -qqy update  \
-    && apt-get -qqy install \ 
-    procps \
-    sudo \
-    vim \ 
-    unzip \
-    tzdata \
-    openssl \
-    wget \
-    curl \
-    iputils-ping \
-    lsof \
-    fonts-wqy-zenhei \
-    fonts-wqy-microhei \
-    apt-transport-https \
-    ca-certificates \                                                                                                                                                                                                      
-    && update-ca-certificates\
-    && apt-get -qqy --purge autoremove \
-    && apt-get -qqy clean \
-    && rm -rf /var/lib/apt/lists/* \
-    && rm -rf /tmp/* \
-    && rm -rf /var/tmp/* \
-    && sed -i "s|Suites:\s*bookworm\s*bookworm-updates.*|Suites: bookworm bookworm-updates bookworm-backports trixie sid experimental|g" /etc/apt/sources.list.d/debian.sources \
-    && echo 'export PROMPT_COMMAND="history -a; $PROMPT_COMMAND"' >> /etc/bash.bashrc 
+RUN cat /etc/os-release
 
 RUN set -eux \  
     && apt-get -qqy update  \
@@ -68,6 +43,34 @@ RUN set -eux \
     && update-alternatives-llvm.sh  "${LLVM_VERSION}" 100  >/dev/null 2>&1 \
     && rm llvm.sh 
      
+
+# Base
+RUN set -eux \
+    && apt-get -qqy update  \
+    && apt-get -qqy install \ 
+    procps \
+    sudo \
+    vim \ 
+    unzip \
+    tzdata \
+    openssl \
+    wget \
+    curl \
+    iputils-ping \
+    lsof \
+    fonts-wqy-zenhei \
+    fonts-wqy-microhei \
+    apt-transport-https \
+    ca-certificates \                                                                                                                                                                                                      
+    && update-ca-certificates\
+    && apt-get -qqy --purge autoremove \
+    && apt-get -qqy clean \
+    && rm -rf /var/lib/apt/lists/* \
+    && rm -rf /tmp/* \
+    && rm -rf /var/tmp/* \
+    && sed -i "s|Suites:\s*bookworm\s*bookworm-updates.*|Suites: bookworm bookworm-updates bookworm-backports trixie sid experimental|g" /etc/apt/sources.list.d/debian.sources \
+    && echo 'export PROMPT_COMMAND="history -a; $PROMPT_COMMAND"' >> /etc/bash.bashrc 
+
 # OpenSSH Server
 RUN set -eux \
     && apt-get -qqy update  \
